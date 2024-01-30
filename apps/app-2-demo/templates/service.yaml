@@ -11,7 +11,6 @@ spec:
     app: {{ .Values.appName }}
     environment: {{ .Values.environment }}
   ports:
-  - port: 5000
-    protocol: TCP
-    targetPort: 5000
-    nodePort: 30080
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

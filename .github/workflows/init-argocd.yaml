@@ -37,9 +37,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add global-argocd-app/values.yaml
-        git commit -m "Update global-argocd-global/values.yaml"
-        git add argocd/*
+        git add .
         git commit -m "Update argocd applications"
         git push
 

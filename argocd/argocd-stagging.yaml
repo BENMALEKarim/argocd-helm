@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app-helm
+  name: my-app-helm-stagging
 spec:
   destination:
     server: "https://kubernetes.default.svc" 
@@ -24,7 +24,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-awesome-app
+  name: my-awesome-app-stagging
 spec:
   destination:
     server: "https://kubernetes.default.svc" 

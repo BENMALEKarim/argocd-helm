@@ -16,7 +16,7 @@ spec:
     helm:
       valueFiles:
         - '/environments/{{ $.Values.environment }}-values.yaml'
-        - 'apps/{{ . }}/environments/{{ $.Values.environment }}-values.yaml'
+        - '/apps/{{ . }}/environments/{{ $.Values.environment }}-values.yaml'
   syncPolicy:
     automated: {}
     syncOptions:

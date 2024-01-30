@@ -30,7 +30,7 @@ jobs:
         mkdir -p argocd
         for env_file in environments/*; do
           env_name=$(basename "$env_file")
-          helm template test --values "$env_file" global-argocd-app/ > "argocd/${env_name}.yaml"
+          helm template test --values "$env_file" global-argocd-app/ > "argocd/${env_name}"
         done
 
     - name: Commit and Push Changes

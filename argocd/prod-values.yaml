@@ -17,7 +17,7 @@ spec:
     helm:
       valueFiles:
         - '/environments/prod-values.yaml'
-        - 'apps/app-1-demo/environments/prod-values.yaml'
+        - '/apps/app-1-demo/environments/prod-values.yaml'
   syncPolicy:
     automated: {}
     syncOptions:
@@ -41,7 +41,7 @@ spec:
     helm:
       valueFiles:
         - '/environments/prod-values.yaml'
-        - 'apps/app-2-demo/environments/prod-values.yaml'
+        - '/apps/app-2-demo/environments/prod-values.yaml'
   syncPolicy:
     automated: {}
     syncOptions:
@@ -65,7 +65,7 @@ spec:
     helm:
       valueFiles:
         - '/environments/prod-values.yaml'
-        - 'apps/app-3-demo/environments/prod-values.yaml'
+        - '/apps/app-3-demo/environments/prod-values.yaml'
   syncPolicy:
     automated: {}
     syncOptions:

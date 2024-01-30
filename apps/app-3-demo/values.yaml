@@ -7,5 +7,5 @@ appName: app3
 replicaCount: 1
 
 image:
-  repository: nginx 
+  repository: benmalekarim/flask-app 
   tag: 1.25

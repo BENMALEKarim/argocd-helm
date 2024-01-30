@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     server: "https://kubernetes.default.svc" 
-    namespace: {{ .release_name }}-namespace
+    namespace: {{ $.Values.environment }}-namespace
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'

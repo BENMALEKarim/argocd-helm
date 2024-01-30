@@ -1,0 +1,42 @@
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app-helm
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: stagging-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'my-app-helm'
+    targetRevision: 'main'  # or use a specific branch/tag/commit
+    helm:
+      valueFiles:
+        - '/environments/stagging-values.yaml'
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-awesome-app
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: stagging-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'my-awesome-app'
+    targetRevision: 'main'  # or use a specific branch/tag/commit
+    helm:
+      valueFiles:
+        - '/environments/stagging-values.yaml'
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true

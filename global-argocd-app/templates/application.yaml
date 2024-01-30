@@ -15,5 +15,8 @@ spec:
     helm:
       valueFiles:
         - '/environments/{{ $.Values.environment }}-values.yaml'
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
 ---
 {{ end }}

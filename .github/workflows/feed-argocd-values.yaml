@@ -27,8 +27,13 @@ jobs:
 
     - name: Commit and Push Changes
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "$GITHUB_EMAIL"
+        git config --local user.name "$GITHUB_USER"
         git add global-argocd-app/values.yaml
         git commit -m "Update global-argocd-global/values.yaml [skip ci]"
+        git remote set-url origin "https://$GITHUB_TOKEN@github.com/BENMALEKarim/argocd-helm.git"
         git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPOSITORY_TOKEN }}
+        GITHUB_EMAIL: ${{ secrets.REPOSITORY_EMAIL }}
+        GITHUB_USER: ${{ secrets.REPOSITORY_USER }}

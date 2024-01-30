@@ -1,0 +1,69 @@
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-1-demo-prod
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: prod-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/app-1-demo'
+    targetRevision: 'main'  # or use a specific branch/tag/commit
+    helm:
+      valueFiles:
+        - '/environments/prod-values.yaml'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-2-demo-prod
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: prod-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/app-2-demo'
+    targetRevision: 'main'  # or use a specific branch/tag/commit
+    helm:
+      valueFiles:
+        - '/environments/prod-values.yaml'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-3-demo-prod
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: prod-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/app-3-demo'
+    targetRevision: 'main'  # or use a specific branch/tag/commit
+    helm:
+      valueFiles:
+        - '/environments/prod-values.yaml'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

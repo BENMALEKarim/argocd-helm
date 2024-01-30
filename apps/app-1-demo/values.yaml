@@ -7,5 +7,4 @@ appName: app1
 replicaCount: 1
 
 image:
-  repository: benmalekarim/flask-app 
-  tag: 1.25
+  repository: benmalekarim/flask-app

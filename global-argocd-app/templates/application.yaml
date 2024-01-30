@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .release_name }}-{{ $.Values.environment }}
+  name: {{ . }}-{{ $.Values.environment }}
   namespace: argocd
 spec:
   destination:
@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
-    path: 'apps/{{ .release_name }}'
+    path: 'apps/{{ . }}'
     targetRevision: 'main'  # or use a specific branch/tag/commit
     helm:
       valueFiles:

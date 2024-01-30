@@ -1,0 +1,34 @@
+name: Update global-argocd-global/values.yaml
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-values-yaml:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Extract App Names
+      run: |
+        # Get the list of app directories and format as YAML list
+        APP_NAMES=$(ls -1 apps/ | sed 's/^/- /')
+
+        # Create or update global-argocd/values.yaml with the app names
+        echo "apps:" > global-argocd-app/values.yaml
+        echo "$APP_NAMES" >> global-argocd-app/values.yaml
+
+    - name: Display Updated values.yaml
+      run: cat global-argocd-app/values.yaml
+
+    - name: Commit and Push Changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add global-argocd/values.yaml
+        git commit -m "Update global-argocd-global/values.yaml [skip ci]"
+        git push

@@ -1,4 +1,4 @@
-name: Update global-argocd-global/values.yaml
+name: Init ArgoCD files
 
 on:
   push:
@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  update-values-yaml:
+  init-argocd:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -25,10 +24,23 @@ jobs:
     - name: Display Updated values.yaml
       run: cat global-argocd-app/values.yaml
 
+
+    - name: Generate Helm Templates
+      run: |
+        mkdir -p argocd
+        for env_file in environments/*; do
+          env_name=$(basename "$env_file")
+          helm template test --values "$env_file" global-argocd-app/ > "argocd/${env_name}.yaml"
+        done
+
     - name: Commit and Push Changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add global-argocd-app/values.yaml
-        git commit -m "Update global-argocd-global/values.yaml [skip ci]"
+        git commit -m "Update global-argocd-global/values.yaml"
+        git add argocd/*
+        git commit -m "Update argocd applications"
         git push
+
+  

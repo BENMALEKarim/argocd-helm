@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "my-app-helm.fullname" . }}
   labels:
+    {{- include "my-app-helm.labels" . | nindent 4 }}
     environment: {{ .Values.environment }}
 spec:
   {{- if not .Values.autoscaling.enabled }}

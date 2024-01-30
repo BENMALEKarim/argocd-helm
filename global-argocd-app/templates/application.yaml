@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .release_name }}-app
+  name: {{ .release_name }}
 spec:
   destination:
     server: "https://kubernetes.default.svc" 

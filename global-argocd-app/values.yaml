@@ -1,0 +1,3 @@
+apps:
+- release_name: my-app-helm
+- release_name: my-awesome-app

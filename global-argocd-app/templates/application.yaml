@@ -14,6 +14,6 @@ spec:
     targetRevision: 'main'  # or use a specific branch/tag/commit
     helm:
       valueFiles:
-        - '{{ .release_name }}/environments/{{ $.Values.environment }}-values.yaml'
+        - '/environments/{{ $.Values.environment }}-values.yaml'
 ---
 {{ end }}

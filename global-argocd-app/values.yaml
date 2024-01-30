@@ -1,3 +1,4 @@
 apps:
-- release_name: my-app-helm
-- release_name: my-awesome-app
+- release_name: app-1-demo
+- release_name: app-2-demo
+- release_name: app-3-demo

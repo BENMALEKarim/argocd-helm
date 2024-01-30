@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-awesome-app.fullname" . }}
+  name: {{ include "app-2-demo.fullname" . }}
   labels:
-    {{- include "my-awesome-app.labels" . | nindent 4 }}
+    {{- include "app-2-demo.labels" . | nindent 4 }}
     environment: {{ .Values.environment }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
@@ -11,7 +11,7 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "my-awesome-app.selectorLabels" . | nindent 6 }}
+      {{- include "app-2-demo.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,13 +19,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "my-awesome-app.selectorLabels" . | nindent 8 }}
+        {{- include "app-2-demo.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "my-awesome-app.serviceAccountName" . }}
+      serviceAccountName: {{ include "app-2-demo.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

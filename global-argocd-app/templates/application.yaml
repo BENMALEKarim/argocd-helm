@@ -11,12 +11,13 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
-    path: '{{ .release_name }}'
+    path: 'apps/{{ .release_name }}'
     targetRevision: 'main'  # or use a specific branch/tag/commit
     helm:
       valueFiles:
         - '/environments/{{ $.Values.environment }}-values.yaml'
   syncPolicy:
+    automated: {}
     syncOptions:
     - CreateNamespace=true
 ---

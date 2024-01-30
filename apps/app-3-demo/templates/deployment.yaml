@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-app-helm.fullname" . }}
+  name: {{ include "app-3-demo.fullname" . }}
   labels:
-    {{- include "my-app-helm.labels" . | nindent 4 }}
+    {{- include "app-3-demo.labels" . | nindent 4 }}
     environment: {{ .Values.environment }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
@@ -11,7 +11,7 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "my-app-helm.selectorLabels" . | nindent 6 }}
+      {{- include "app-3-demo.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,13 +19,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "my-app-helm.selectorLabels" . | nindent 8 }}
+        {{- include "app-3-demo.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "my-app-helm.serviceAccountName" . }}
+      serviceAccountName: {{ include "app-3-demo.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

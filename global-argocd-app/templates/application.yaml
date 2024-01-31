@@ -14,6 +14,7 @@ spec:
     path: 'apps/{{ . }}'
     targetRevision: 'main'
     helm:
+      releaseName: {{ . }}-{{ $.Values.environment }}
       valueFiles:
         - '/environments/{{ $.Values.environment }}-values.yaml'
         - '/apps/{{ . }}/environments/{{ $.Values.environment }}-values.yaml'

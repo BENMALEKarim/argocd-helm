@@ -1,2 +1,3 @@
 environment: prod
-secrets_manager.enabled: true
+secrets_manager:
+  enabled: true

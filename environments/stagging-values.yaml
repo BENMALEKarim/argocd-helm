@@ -1,1 +1,2 @@
 environment: stagging
+secrets_manager.enabled: false

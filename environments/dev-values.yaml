@@ -1,1 +1,2 @@
 environment: dev
+secrets_manager.enabled: false

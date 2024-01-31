@@ -8,4 +8,4 @@ curl -s http://${SERVICE_IP}:${PORT} -w "\n"
 
 export POD_NAME=$(kubectl get pod -n ${NAMESPACE} -l app=${APP_NAME} -ojsonpath='{.items[0].metadata.name}')
 
-kubectl exec -n prod-namespace ${POD_NAME} -- env
+kubectl exec -n prod-namespace ${POD_NAME} -- env 

@@ -42,4 +42,4 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: {{ .Values.appName }}-secret
-                key: password
+                key: PASSWORD

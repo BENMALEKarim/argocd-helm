@@ -1,0 +1,4 @@
+apps:
+- mock-authentication
+- mock-frontend
+- mock-payment

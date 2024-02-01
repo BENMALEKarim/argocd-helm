@@ -38,8 +38,8 @@ spec:
               configMapKeyRef:
                 name: {{ .Values.appName }}-configmap
                 key: ENVIRONMENT
-          - name: PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.appName }}-secret
-                key: PASSWORD
+          # - name: PASSWORD
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: {{ .Values.appName }}-secret
+          #       key: PASSWORD

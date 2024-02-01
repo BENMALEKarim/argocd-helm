@@ -2,9 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-appName: app1
+appName: mock-payment
 
 replicaCount: 1
 
 image:
-  repository: benmalekarim/flask-app
+  repository: benmalekarim/flask-app 

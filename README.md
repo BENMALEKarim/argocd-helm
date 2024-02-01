@@ -16,6 +16,6 @@ helm install external-secrets \
    external-secrets/external-secrets \
     -n external-secrets \
     --create-namespace \
-    --set installCRDs=false
+    --set installCRDs=true
 
 kubectl create secret generic awssm-secret --from-file=./access-key --from-file=./secret-access-key

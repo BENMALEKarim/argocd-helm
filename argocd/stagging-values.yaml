@@ -1,0 +1,81 @@
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1-stagging
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: stagging-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/app1'
+    targetRevision: 'main'
+    helm:
+      releaseName: app1-stagging
+      valueFiles:
+        - '/environments/stagging-values.yaml'
+        - '/apps/app1/environments/stagging-values.yaml'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2-stagging
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: stagging-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/app2'
+    targetRevision: 'main'
+    helm:
+      releaseName: app2-stagging
+      valueFiles:
+        - '/environments/stagging-values.yaml'
+        - '/apps/app2/environments/stagging-values.yaml'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app3-stagging
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: stagging-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/app3'
+    targetRevision: 'main'
+    helm:
+      releaseName: app3-stagging
+      valueFiles:
+        - '/environments/stagging-values.yaml'
+        - '/apps/app3/environments/stagging-values.yaml'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -2,7 +2,7 @@
 
 export PORT=5000
 export NAMESPACE=dev-namespace
-export APP_NAME=app1
+export APP_NAME=mock-authentication
 export SERVICE_IP=$(kubectl get svc -n ${NAMESPACE} -l app=${APP_NAME} -ojsonpath='{.items[0].spec.clusterIP}')
 curl -s http://${SERVICE_IP}:${PORT} -w "\n"
 

@@ -1,2 +1,4 @@
 image:
-  tag: "ff370511-develop"
+  tag: v2.5.0
+
+replicaCount: 1

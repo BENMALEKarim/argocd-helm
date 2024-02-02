@@ -1,2 +1,4 @@
 image:
   tag: v2.5.0
+
+replicaCount: 1

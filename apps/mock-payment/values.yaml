@@ -4,7 +4,5 @@
 
 appName: mock-payment
 
-replicaCount: 1
-
 image:
-  repository: benmalekarim/flask-app 
+  repository: benmalekarim/mock-payment

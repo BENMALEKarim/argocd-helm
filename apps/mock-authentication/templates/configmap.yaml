@@ -9,6 +9,4 @@ data:
   APP_NAME: {{ .Values.appName }}
   ENVIRONMENT: {{ .Values.environment }}
   VERSION: {{ .Values.image.tag }}
-  {{ if eq .Values.environment dev }}
   PASSWORD: dummy-password
-  {{ end }}

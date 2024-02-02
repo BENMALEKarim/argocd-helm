@@ -1,0 +1,81 @@
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mock-authentication-dev
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: dev-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/mock-authentication'
+    targetRevision: 'main'
+    helm:
+      releaseName: mock-authentication-dev
+      valueFiles:
+        - '/environments/dev-values.yaml'
+        - '/apps/mock-authentication/environments/dev-values.yaml'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mock-frontend-dev
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: dev-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/mock-frontend'
+    targetRevision: 'main'
+    helm:
+      releaseName: mock-frontend-dev
+      valueFiles:
+        - '/environments/dev-values.yaml'
+        - '/apps/mock-frontend/environments/dev-values.yaml'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+---
+# Source: global-argocd-app/templates/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mock-payment-dev
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc" 
+    namespace: dev-namespace
+  project: default
+  source:
+    repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
+    path: 'apps/mock-payment'
+    targetRevision: 'main'
+    helm:
+      releaseName: mock-payment-dev
+      valueFiles:
+        - '/environments/dev-values.yaml'
+        - '/apps/mock-payment/environments/dev-values.yaml'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

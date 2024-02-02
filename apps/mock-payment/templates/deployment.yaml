@@ -22,19 +22,6 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
           - containerPort: 5000
-          env:
-          - name: APP_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.appName }}-configmap
-                key: APP_NAME
-          - name: VERSION
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.appName }}-configmap
-                key: VERSION
-          - name: ENVIRONMENT
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.appName }}-configmap
-                key: ENVIRONMENT
+          envFrom:
+          - configMapRef:
+              name: {{ .Values.appName }}-configmap

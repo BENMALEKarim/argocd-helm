@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Extract App Names
       run: |
@@ -20,10 +20,6 @@ jobs:
         # Create or update global-argocd/values.yaml with the app names
         echo "apps:" > global-argocd-app/values.yaml
         echo "$APP_NAMES" >> global-argocd-app/values.yaml
-
-    - name: Display Updated values.yaml
-      run: cat global-argocd-app/values.yaml
-
 
     - name: Generate Helm Templates
       run: |

@@ -9,4 +9,3 @@ data:
   APP_NAME: {{ .Values.appName }}
   ENVIRONMENT: {{ .Values.environment }}
   VERSION: {{ .Values.image.tag }}
-  PASSWORD: not-secure-password

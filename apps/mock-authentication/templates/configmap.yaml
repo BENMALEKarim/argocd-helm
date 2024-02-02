@@ -9,4 +9,4 @@ data:
   APP_NAME: {{ .Values.appName }}
   ENVIRONMENT: {{ .Values.environment }}
   VERSION: {{ .Values.image.tag }}
-  PASSWORD: dummy-password
+  PASSWORD: not-secure-password

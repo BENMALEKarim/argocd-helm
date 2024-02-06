@@ -9,4 +9,4 @@ data:
   APP_NAME: {{ .Values.appName }}
   ENVIRONMENT: {{ .Values.environment }}
   VERSION: {{ .Values.image.tag }}
-  MOCK: karim
+  MOCK: TESTINHO

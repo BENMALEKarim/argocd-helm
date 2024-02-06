@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'apps/**'
+    paths-ignore:
+      - 'apps/*/**'
 
 jobs:
   init-argocd:
@@ -41,7 +45,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add global-argocd-app/values.yaml
         git add argocd/
-        git commit -m "Update argocd applications"
+        git commit -m "An application was added or deleted"
         git push
 
   

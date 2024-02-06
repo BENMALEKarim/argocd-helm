@@ -13,6 +13,8 @@ spec:
       environment: {{ .Values.environment }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
       labels:
         app: {{ .Values.appName }}
         environment: {{ .Values.environment }}

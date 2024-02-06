@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-demo-app-of-apps-nonprod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/BENMALEKarim/argocd-helm/"
+    targetRevision: "main"
+    path: "argocd/nonprod"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

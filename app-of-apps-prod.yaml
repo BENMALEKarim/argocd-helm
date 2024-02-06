@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: helm-demo-app-of-apps
+  name: helm-demo-app-of-apps-prod
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: "https://github.com/BENMALEKarim/argocd-helm/"
     targetRevision: "main"
-    path: "argocd/"
+    path: "argocd/prod"
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

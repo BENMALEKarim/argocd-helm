@@ -1,12 +1,10 @@
-name: Init ArgoCD files
+name: Refresh ArgoCD Application files
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  init-argocd:
+  refresh-argocd:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
@@ -23,6 +21,7 @@ jobs:
 
     - name: Generate Helm Templates
       run: |
+        rm -rf argocd
         mkdir -p argocd
         mkdir -p argocd/nonprod
         for file in environments/*.yaml; do
@@ -41,7 +40,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add global-argocd-app/values.yaml
         git add argocd/
-        git commit -m "An application was added or deleted"
+        git commit -m "Refresh ArgoCD application files"
         git push
 
   

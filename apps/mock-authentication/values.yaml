@@ -1,6 +1,4 @@
 appName: mock-authentication
 
-replicaCount: 1
-
 image:
   repository: benmalekarim/mock-authentication

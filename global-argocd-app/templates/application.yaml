@@ -12,9 +12,12 @@ spec:
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
     path: 'apps/{{ . }}'
+    {{- if eq .Values.environment "prod" }}
+    targetRevision: {{ $.Values.release }}
+    {{- else }}
     targetRevision: 'main'
+    {{- end }}
     helm:
-      releaseName: {{ . }}-{{ $.Values.environment }}
       valueFiles:
         - '/environments/{{ $.Values.environment }}-values.yaml'
         - '/apps/{{ . }}/environments/{{ $.Values.environment }}-values.yaml'

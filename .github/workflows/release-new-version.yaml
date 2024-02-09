@@ -1,0 +1,28 @@
+name: Release New Version
+
+on:
+  push:
+    tags:
+    - '**'
+
+jobs:
+  release-new-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Set git tag
+      id: set_release_tag
+      run: |
+        echo "RELEASE_TAG=$(basename ${{ github.ref }})" >> $GITHUB_ENV
+    - name: Generate Helm Templates
+      run: |
+        helm template test --values environments/prod-values.yaml --set release=${{ env.RELEASE_TAG }} global-argocd-app > argocd/prod/prod-argocd.yaml
+
+    - name: Commit and Push Changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "New release ${{ env.RELEASE_TAG }} delivred" || exit 0
+        git push

@@ -15,11 +15,10 @@ jobs:
       id: set_release_tag
       run: |
         echo "RELEASE_TAG=$(basename ${{ github.ref }})" >> $GITHUB_ENV
-    - name: Clean workspace
-      run: |
-        rm -rf .
-    - name: Checkout Repository
+    - name: Checking out main
       uses: actions/checkout@v4
+      with:
+        ref: main
     - name: Generate Helm Templates
       run: |
         helm template test --values environments/prod-values.yaml --set release=${{ env.RELEASE_TAG }} global-argocd-app > argocd/prod/prod-argocd.yaml

@@ -2,10 +2,16 @@ name: Refresh ArgoCD Application files
 
 on:
   workflow_dispatch:
+    inputs:
+        production_release:
+          description: Production Release
+          required: true
 
 jobs:
   refresh-argocd:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.production_release }}
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
@@ -21,9 +27,6 @@ jobs:
 
     - name: Generate Helm Templates
       run: |
-        rm -rf argocd
-        mkdir -p argocd
-        mkdir -p argocd/nonprod
         for file in environments/*.yaml; do
           if [ "$file" != "environments/prod-values.yaml" ]; then
             env=$(basename $file .yaml | cut -d'-' -f1)
@@ -32,7 +35,7 @@ jobs:
           fi
         done
         mkdir -p argocd/prod
-        helm template test --values environments/prod-values.yaml global-argocd-app > argocd/prod/prod-argocd.yaml
+        helm template test --values environments/prod-values.yaml --set release=${{ env.RELEASE_TAG }} global-argocd-app > argocd/prod/prod-argocd.yaml
 
     - name: Commit and Push Changes
       run: |

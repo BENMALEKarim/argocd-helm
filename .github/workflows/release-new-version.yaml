@@ -17,7 +17,7 @@ jobs:
         echo "RELEASE_TAG=$(basename ${{ github.ref }})" >> $GITHUB_ENV
     - name: Clean workspace
       run: |
-        rm- rf .
+        rm -rf .
     - name: Checkout Repository
       uses: actions/checkout@v4
     - name: Generate Helm Templates

@@ -25,4 +25,4 @@ jobs:
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "New release ${{ env.RELEASE_TAG }} delivred" || exit 0
-        git push
+        git push origin main

@@ -3,12 +3,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mock-authentication-dev
+  name: mock-authentication-stagging
   namespace: argocd
 spec:
   destination:
     server: "https://kubernetes.default.svc" 
-    namespace: dev-namespace
+    namespace: stagging-namespace
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
@@ -16,8 +16,8 @@ spec:
     targetRevision: 'main'
     helm:
       valueFiles:
-        - '/environments/dev-values.yaml'
-        - '/apps/mock-authentication/environments/dev-values.yaml'
+        - '/environments/stagging-values.yaml'
+        - '/apps/mock-authentication/environments/stagging-values.yaml'
   syncPolicy:
     automated:
       prune: true
@@ -29,12 +29,12 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mock-frontend-dev
+  name: mock-frontend-stagging
   namespace: argocd
 spec:
   destination:
     server: "https://kubernetes.default.svc" 
-    namespace: dev-namespace
+    namespace: stagging-namespace
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
@@ -42,8 +42,8 @@ spec:
     targetRevision: 'main'
     helm:
       valueFiles:
-        - '/environments/dev-values.yaml'
-        - '/apps/mock-frontend/environments/dev-values.yaml'
+        - '/environments/stagging-values.yaml'
+        - '/apps/mock-frontend/environments/stagging-values.yaml'
   syncPolicy:
     automated:
       prune: true
@@ -55,12 +55,12 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mock-payment-dev
+  name: mock-payment-stagging
   namespace: argocd
 spec:
   destination:
     server: "https://kubernetes.default.svc" 
-    namespace: dev-namespace
+    namespace: stagging-namespace
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
@@ -68,8 +68,8 @@ spec:
     targetRevision: 'main'
     helm:
       valueFiles:
-        - '/environments/dev-values.yaml'
-        - '/apps/mock-payment/environments/dev-values.yaml'
+        - '/environments/stagging-values.yaml'
+        - '/apps/mock-payment/environments/stagging-values.yaml'
   syncPolicy:
     automated:
       prune: true

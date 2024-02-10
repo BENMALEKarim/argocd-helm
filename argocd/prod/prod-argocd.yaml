@@ -3,21 +3,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mock-authentication-dev
+  name: mock-authentication-prod
   namespace: argocd
 spec:
   destination:
     server: "https://kubernetes.default.svc" 
-    namespace: dev-namespace
+    namespace: prod-namespace
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
     path: 'apps/mock-authentication'
-    targetRevision: 'main'
+    targetRevision: v1.0.0
     helm:
       valueFiles:
-        - '/environments/dev-values.yaml'
-        - '/apps/mock-authentication/environments/dev-values.yaml'
+        - '/environments/prod-values.yaml'
+        - '/apps/mock-authentication/environments/prod-values.yaml'
   syncPolicy:
     automated:
       prune: true
@@ -29,21 +29,21 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mock-frontend-dev
+  name: mock-frontend-prod
   namespace: argocd
 spec:
   destination:
     server: "https://kubernetes.default.svc" 
-    namespace: dev-namespace
+    namespace: prod-namespace
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
     path: 'apps/mock-frontend'
-    targetRevision: 'main'
+    targetRevision: v1.0.0
     helm:
       valueFiles:
-        - '/environments/dev-values.yaml'
-        - '/apps/mock-frontend/environments/dev-values.yaml'
+        - '/environments/prod-values.yaml'
+        - '/apps/mock-frontend/environments/prod-values.yaml'
   syncPolicy:
     automated:
       prune: true
@@ -55,21 +55,21 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mock-payment-dev
+  name: mock-payment-prod
   namespace: argocd
 spec:
   destination:
     server: "https://kubernetes.default.svc" 
-    namespace: dev-namespace
+    namespace: prod-namespace
   project: default
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
     path: 'apps/mock-payment'
-    targetRevision: 'main'
+    targetRevision: v1.0.0
     helm:
       valueFiles:
-        - '/environments/dev-values.yaml'
-        - '/apps/mock-payment/environments/dev-values.yaml'
+        - '/environments/prod-values.yaml'
+        - '/apps/mock-payment/environments/prod-values.yaml'
   syncPolicy:
     automated:
       prune: true

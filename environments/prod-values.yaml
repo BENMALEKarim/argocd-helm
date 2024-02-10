@@ -1,4 +1,4 @@
 environment: prod
 
 secret:
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0NTY3ODkiLCJuYW1lIjoiS2FyaW0gQkVOTUFMRUsgUFJPRCBUT0tFTiJ9.COC3Ua8z66kra-oxddibDuc0YqNE6RiUdxgvXxNSJQY"
+  token: "YWl6ZXJ6anJreXplcnJ1b25mYwo="

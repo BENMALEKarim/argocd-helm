@@ -13,9 +13,8 @@ spec:
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
     path: 'apps/mock-authentication'
-    targetRevision: 'main'
+    targetRevision: v1.0.0
     helm:
-      releaseName: mock-authentication-prod
       valueFiles:
         - '/environments/prod-values.yaml'
         - '/apps/mock-authentication/environments/prod-values.yaml'
@@ -40,9 +39,8 @@ spec:
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
     path: 'apps/mock-frontend'
-    targetRevision: 'main'
+    targetRevision: v1.0.0
     helm:
-      releaseName: mock-frontend-prod
       valueFiles:
         - '/environments/prod-values.yaml'
         - '/apps/mock-frontend/environments/prod-values.yaml'
@@ -67,9 +65,8 @@ spec:
   source:
     repoURL: 'https://github.com/BENMALEKarim/argocd-helm/'
     path: 'apps/mock-payment'
-    targetRevision: 'main'
+    targetRevision: v1.0.0
     helm:
-      releaseName: mock-payment-prod
       valueFiles:
         - '/environments/prod-values.yaml'
         - '/apps/mock-payment/environments/prod-values.yaml'

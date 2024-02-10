@@ -15,7 +15,6 @@ spec:
     path: 'apps/mock-authentication'
     targetRevision: 'main'
     helm:
-      releaseName: mock-authentication-stagging
       valueFiles:
         - '/environments/stagging-values.yaml'
         - '/apps/mock-authentication/environments/stagging-values.yaml'
@@ -42,7 +41,6 @@ spec:
     path: 'apps/mock-frontend'
     targetRevision: 'main'
     helm:
-      releaseName: mock-frontend-stagging
       valueFiles:
         - '/environments/stagging-values.yaml'
         - '/apps/mock-frontend/environments/stagging-values.yaml'
@@ -69,7 +67,6 @@ spec:
     path: 'apps/mock-payment'
     targetRevision: 'main'
     helm:
-      releaseName: mock-payment-stagging
       valueFiles:
         - '/environments/stagging-values.yaml'
         - '/apps/mock-payment/environments/stagging-values.yaml'
